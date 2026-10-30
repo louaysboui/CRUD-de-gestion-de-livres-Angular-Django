@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #f5f6fa; color: #222; }
+
+.topbar { background: #1f2a44; padding: 1rem 2rem; }
+.topbar .brand { color: #fff; text-decoration: none; font-weight: 600; font-size: 1.2rem; }
+.container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+
+.page-header { display: flex; justify-content: space-between; align-items: center; }
+
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
+th, td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid #eee; }
+th { background: #eef0f6; }
+.actions { text-align: right; white-space: nowrap; }
+
+.btn { display: inline-block; padding: .45rem .9rem; border: 1px solid #ccd; border-radius: 6px;
+       background: #fff; color: #222; cursor: pointer; text-decoration: none; font-size: .9rem; }
+.btn-primary { background: #3b6df0; border-color: #3b6df0; color: #fff; }
+.btn-danger { background: #e04b4b; border-color: #e04b4b; color: #fff; }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+
+form { background: #fff; padding: 1.5rem; border-radius: 8px; }
+.field { display: flex; flex-direction: column; margin-bottom: 1rem; }
+.field label { font-weight: 600; margin-bottom: .3rem; }
+.field input { padding: .6rem; border: 1px solid #ccd; border-radius: 6px; }
+.field input.ng-invalid.ng-touched { border-color: #e04b4b; }
+.error { color: #e04b4b; margin-top: .25rem; }
+.alert { background: #fdecec; color: #a12; padding: .75rem 1rem; border-radius: 6px; }
+.form-actions { display: flex; justify-content: flex-end; gap: .5rem; }
+.search-bar { display: flex; gap: .5rem; margin: 1rem 0; }
+.search-bar input { flex: 1; padding: .6rem .9rem; border: 1px solid #ccd; border-radius: 6px; font-size: 1rem; }
+.search-bar input:focus { outline: 2px solid #3b6df0; border-color: transparent; }

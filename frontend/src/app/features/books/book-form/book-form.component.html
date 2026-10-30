@@ -1,0 +1,43 @@
+<h1>{{ isEdit ? 'Modifier le livre' : 'Ajouter un livre' }}</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <div class="field">
+    <label for="title">Titre *</label>
+    <input id="title" type="text" formControlName="title" />
+    <small class="error" *ngIf="hasError('title', 'required')">Le titre est obligatoire.</small>
+    <small class="error" *ngIf="hasError('title', 'minlength')">Minimum 2 caractères.</small>
+  </div>
+
+  <div class="field">
+    <label for="author">Auteur *</label>
+    <input id="author" type="text" formControlName="author" />
+    <small class="error" *ngIf="hasError('author', 'required')">L'auteur est obligatoire.</small>
+    <small class="error" *ngIf="hasError('author', 'minlength')">Minimum 2 caractères.</small>
+  </div>
+
+  <div class="field">
+    <label for="year">Année de publication *</label>
+    <input id="year" type="number" formControlName="publication_year" />
+    <small class="error" *ngIf="hasError('publication_year', 'required')">L'année est obligatoire.</small>
+    <small class="error" *ngIf="hasError('publication_year', 'min') || hasError('publication_year', 'max')">
+      L'année doit être comprise entre 1000 et {{ currentYear }}.
+    </small>
+  </div>
+
+  <div class="field">
+    <label for="isbn">ISBN (optionnel)</label>
+    <input id="isbn" type="text" formControlName="isbn" placeholder="10 ou 13 chiffres, sans tirets" />
+    <small class="error" *ngIf="hasError('isbn', 'pattern')">L'ISBN doit contenir 10 ou 13 chiffres.</small>
+  </div>
+
+  <ul class="alert" *ngIf="serverErrors.length">
+    <li *ngFor="let e of serverErrors">{{ e }}</li>
+  </ul>
+
+  <div class="form-actions">
+    <a routerLink="/books" class="btn">Annuler</a>
+    <button type="submit" class="btn btn-primary" [disabled]="saving">
+      {{ saving ? 'Enregistrement...' : 'Enregistrer' }}
+    </button>
+  </div>
+</form>

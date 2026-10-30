@@ -1,0 +1,47 @@
+<div class="page-header">
+  <h1>Livres</h1>
+  <a routerLink="/books/new" class="btn btn-primary">+ Ajouter un livre</a>
+</div>
+
+<div class="search-bar">
+  <input
+    type="search"
+    [formControl]="searchControl"
+    placeholder="Rechercher par titre, auteur, année ou ISBN..."
+    aria-label="Rechercher un livre"
+  />
+  <button type="button" class="btn" *ngIf="isSearching" (click)="clearSearch()">
+    Effacer
+  </button>
+</div>
+
+<p *ngIf="loading">Chargement...</p>
+<p *ngIf="error" class="alert">{{ error }}</p>
+
+<table *ngIf="books.length > 0">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Auteur</th>
+      <th>Année</th>
+      <th class="actions">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books; trackBy: trackById">
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.publication_year }}</td>
+      <td class="actions">
+        <a [routerLink]="['/books', book.id, 'edit']" class="btn">Modifier</a>
+        <button type="button" class="btn btn-danger" (click)="onDelete(book)">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="!loading && !error && books.length === 0">
+  {{ isSearching ? 'Aucun livre ne correspond à votre recherche.' : 'Aucun livre pour le moment.' }}
+</p>
